@@ -1430,6 +1430,24 @@
         "back": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/11.png"
       },
       "id": 160
+    },
+    {
+      "name": "Lara",
+      "hp": 221,
+      "sprites": {
+        "front": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/19.png",
+        "back": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/19.png"
+      },
+      "id": 161
+    },
+    {
+      "name": "dkdkdiki",
+      "hp": 9,
+      "sprites": {
+        "front": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/5.png",
+        "back": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/15.png"
+      },
+      "id": 162
     }
   ]
 }

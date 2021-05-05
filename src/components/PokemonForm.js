@@ -10,39 +10,20 @@ class PokemonForm extends React.Component {
     this.state = {
       name: "",
       hp: "",
-      sprites: {
-        front: "",
-        back: ""
-      }
+      frontUrl: "",
+      backUrl: ""
     }
   }
 
-
-  // Must write a callback method for 'EACH' OF THE INPUTS, separately
-  handleName = (newName) => {
+  // handleInput
+  //or pass in (e) and then : e.target.value ?
+  handleInput = (event) => {
     this.setState({
-      name: newName
+      [event.target.name]: event.target.value
     })
   }
-  // *So when we invoke this function, handleName(event.target.value), that 'event.target.value' is the 'newName'argument here.
+  // *So when we invoke this function below, handleInput(event), that 'event' is this 'event' parameter here.
 
-  handleHp = (newHp) => {
-    this.setState({
-      hp: newHp
-    })
-  }
-
-  handleFront = (newFront) => {
-    this.setState({
-      sprites: { ...this.state.sprites, front: newFront }
-    })
-  }
-
-  handleBack = (newBack) => {
-    this.setState({
-      sprites: { ...this.state.sprites, back: newBack }
-    })
-  }
 
   handleSubmit = (event) => {
     event.preventDefault()
@@ -51,8 +32,8 @@ class PokemonForm extends React.Component {
       name: this.state.name,
       hp: parseInt(this.state.hp, 10),
       sprites: {
-        front: this.state.sprites.front,
-        back: this.state.sprites.back
+        front: this.state.frontUrl,
+        back: this.state.backUrl
       }
     }
     // console.log(newPokemon)
@@ -74,8 +55,8 @@ class PokemonForm extends React.Component {
           name: "",
           hp: "",
           sprites: {
-            front: "",
-            back: ""
+            frontUrl: "",
+            backUrl: ""
           }
         });
       })
@@ -85,19 +66,23 @@ class PokemonForm extends React.Component {
     return (
       <div>
         <h3>Add a Pokemon!</h3>
-        <Form onSubmit={(event) => this.handleSubmit(event)}>
-          {/* MUST PASS IN EVENT in both arguments!!! */}
+        <Form onSubmit={(event) => this.handleSubmit(event)} onChange={(event) => this.handleInput(event)} >
+          {/* Good practice by passing in both arguments! It will still run fine without passing explicitly and leave them empty */}
           <Form.Group widths="equal">
-            <Form.Input fluid label="Name" placeholder="Name" name="name" onChange={(event) => this.handleName(event.target.value)} value={this.state.name} />
-            <Form.Input fluid label="hp" placeholder="hp" name="hp" onChange={(event) => this.handleHp(event.target.value)} value={this.state.hp} />
-            <Form.Input fluid label="Front Image URL" placeholder="url" name="frontUrl" onChange={(event) => this.handleFront(event.target.value)} value={this.state.sprites.front} />
-            <Form.Input fluid label="Back Image URL" placeholder="url" name="backUrl" onChange={(event) => this.handleBack(event.target.value)} value={this.state.sprites.back} />
+            <Form.Input fluid label="Name" placeholder="Name" name="name" value={this.state.name} />
+            <Form.Input fluid label="hp" placeholder="hp" name="hp" value={this.state.hp} />
+            <Form.Input fluid label="Front Image URL" placeholder="url" name="frontUrl" value={this.state.front} />
+            <Form.Input fluid label="Back Image URL" placeholder="url" name="backUrl" value={this.state.back} />
           </Form.Group>
           <Form.Button>Submit</Form.Button>
         </Form>
-      </div>
+      </div >
     )
   }
 }
 
 export default PokemonForm
+// onChange={(event) => this.handleName(event.target.value)}
+// onChange={(event) => this.handleHp(event.target.value)}
+// onChange={(event) => this.handleFront(event.target.value)} 
+// onChange={(event) => this.handleBack(event.target.value)} 

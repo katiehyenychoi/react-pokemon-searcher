@@ -8,6 +8,8 @@ const BASE_URL = "http://localhost:3000/pokemon/"
 
 class PokemonPage extends React.Component {
 
+  // Question-I didn't put props inside the constructor and super, but it runs fine...?
+  //if we dont pass props, is it automatically passing it in by itself?
   constructor() {
     super()
     this.state = {
@@ -52,7 +54,7 @@ class PokemonPage extends React.Component {
 
   attachNewPokeObj = (pokeObj) => {
     this.setState({
-      // pokemons: { pokeObj, ...this.state.pokemons } //my mistake
+      // pokemons: { pokeObj, ...this.state.pokemons } //my mistake. It has to be an array
       pokemons: [pokeObj, ...this.state.pokemons]
     })
   }
